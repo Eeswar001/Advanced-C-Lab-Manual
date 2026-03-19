@@ -15,13 +15,41 @@ Else
 6.	Return 0
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+struct eligible {
+    int age;
+    char n[50];
+};
 
+int main() {
+    struct eligible e[100];
+    int i, count;
 
+    scanf("%d", &count);
+
+    for(i = 0; i < count; i++) {
+        scanf("%s %d", e[i].n, &e[i].age);
+    }
+
+    for(i = 0; i < count; i++) {
+        if(e[i].age <= 6) {
+            printf("Vaccine Eligibility: No\n");
+        } else {
+            printf("Vaccine Eligibility: Yes\n");
+            printf("Name: %s\n", e[i].n);
+            printf("Age: %d\n", e[i].age);
+        }
+    }
+
+    return 0;
+}
+```
 Output:
 
-//paste your output here
+<img width="427" height="475" alt="image" src="https://github.com/user-attachments/assets/1a8af5d9-dfa3-4d27-8966-32f82510257b" />
+
 
 
 Result:
@@ -43,19 +71,35 @@ Algorithm:
 7.	Return 0
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+struct numbers {
+    int a;
+    int b;
+};
 
+struct numbers add(struct numbers n) {
+    struct numbers result;
+    result.a = n.a + n.b;
+    return result;
+}
 
+int main() {
+    struct numbers n, res;
 
+    printf("Enter two numbers: ");
+    scanf("%d %d", &n.a, &n.b);
 
+    res = add(n);
+
+    printf("Sum = %d", res.a);
+
+    return 0;
+}
+```
 Output:
-
-
-//paste your output here
-
-
-
+<img width="501" height="315" alt="image" src="https://github.com/user-attachments/assets/4f6a5397-a8b0-4249-ace4-8d146dc25049" />
 
 Result:
 Thus, the program is verified successfully
@@ -85,26 +129,36 @@ Use scanf to input the file name into the name array.
 5.	Return 0 to indicate successful program execution.
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int main() {
+    FILE *p;
+    char name[50];
 
+    printf("Enter file name: ");
+    scanf("%s", name);
 
+    printf("File '%s' created successfully\n", name);
 
+    p = fopen(name, "w");
 
+    if (p == NULL) {
+        printf("Error opening file\n");
+        return 1;
+    }
+
+    printf("File opened successfully\n");
+
+    fclose(p);
+
+    printf("File closed successfully\n");
+
+    return 0;
+}
+```
 Output:
-
-
-//paste your output here
-
-
-
-
-
-
-
-
-
-
+<img width="678" height="349" alt="image" src="https://github.com/user-attachments/assets/2318d5da-8de6-45be-a606-2c41c51fe09b" />
 
 Result:
 Thus, the program is verified successfully
@@ -132,21 +186,42 @@ Use scanf to input the file name into the name array and the number of strings i
 5.	Return 0 to indicate successful program execution.
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int main() {
+    FILE *p;
+    char name[50], text[100];
+    int num, i;
 
+    printf("Enter file name and number of strings: ");
+    scanf("%s %d", name, &num);
 
+    p = fopen(name, "w");
 
+    if (p == NULL) {
+        printf("Error opening file\n");
+        return 1;
+    }
 
+    printf("File opened successfully\n");
+
+    for (i = 0; i < num; i++) {
+        printf("Enter string %d: ", i + 1);
+        scanf(" %[^\n]", text);
+        fputs(text, p);
+        fputs("\n", p);
+    }
+
+    fclose(p);
+
+    printf("Data added successfully\n");
+
+    return 0;
+}
+```
 Output:
-
-
-//paste your output here
-
-
-
-
-
+<img width="715" height="322" alt="image" src="https://github.com/user-attachments/assets/bb665fd5-ce47-462d-845f-49c4b0bd3fb8" />
 
 Result:
 Thus, the program is verified successfully
@@ -186,21 +261,47 @@ Algorithm:
 13.End the program by returning 0.
 
 Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+struct subject {
+    char name[50];
+    int marks;
+};
 
+int main() {
+    struct subject *s;
+    int n, i;
 
+    printf("Enter number of subjects: \n");
+    scanf("%d", &n);
 
+    s = (struct subject *)malloc(n * sizeof(struct subject));
 
+    if (s == NULL) {
+        printf("Memory allocation failed\n");
+        return 1;
+    }
+
+    for (i = 0; i < n; i++) {
+        printf("Enter subject name and marks: \n");
+        scanf("%s %d", s[i].name, &s[i].marks);
+    }
+
+    printf("Subject Details:\n");
+
+    for (i = 0; i < n; i++) {
+        printf("%s %d\n", s[i].name, s[i].marks);
+    }
+
+    free(s);
+
+    return 0;
+}
+```
 Output:
-
-
-//paste your output here
-
-
-
-
-
+<img width="466" height="518" alt="image" src="https://github.com/user-attachments/assets/4c35e3cc-cf92-4151-b956-906848747a61" />
 
 Result:
 Thus, the program is verified successfully
