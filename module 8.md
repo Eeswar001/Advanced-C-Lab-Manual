@@ -15,21 +15,51 @@ Algorithm:
 4.	Exit the program.
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int main() {
+    int n;
 
+    scanf("%d", &n);
 
+    switch(n) {
+        case 5:
+            printf("seventy one");
+            break;
+        case 6:
+            printf("seventy two");
+            break;
+        case 7:
+            printf("seventy three");
+            break;
+        case 8:
+            printf("seventy four");
+            break;
+        case 9:
+            printf("seventy five");
+            break;
+        case 10:
+            printf("seventy six");
+            break;
+        case 11:
+            printf("seventy seven");
+            break;
+        case 12:
+            printf("seventy eight");
+            break;
+        case 13:
+            printf("seventy nine");
+            break;
+        default:
+            printf("Greater than 13");
+    }
 
-
+    return 0;
+}
+```
 Output:
-
-
-//paste your output here
-
-
-
-
-
+<img width="483" height="335" alt="image" src="https://github.com/user-attachments/assets/4f9b763f-04d0-484a-9f68-0c6796da639b" />
 
 Result:
 Thus, the program is verified successfully
@@ -46,21 +76,30 @@ Algorithm:
 6.	End
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int main() {
+    char a[50];
+    int i, j, c;
 
+    scanf("%s", a);
 
+    for (i = 0; i <= 9; i++) {
+        c = 0;
+        for (j = 0; a[j] != '\0'; j++) {
+            if (a[j] == i + '0') {
+                c++;
+            }
+        }
+        printf("%d ", c);
+    }
 
-
+    return 0;
+}
+```
 Output:
-
-
-//paste your output here
-
-
-
-
-
+<img width="479" height="319" alt="image" src="https://github.com/user-attachments/assets/da09c715-d22f-404c-9917-9eb587535e4d" />
 
 Result:
 Thus, the program is verified successfully
@@ -83,21 +122,65 @@ Free the memory allocated for each string in s Free the memory allocated for s
 7.	End
  
 Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-//type your code here
+int cmp(const void *a, const void *b) {
+    return (*(char *)a - *(char *)b);
+}
 
+void swap(char *x, char *y) {
+    char t = *x;
+    *x = *y;
+    *y = t;
+}
 
+void reverse(char *s, int l, int r) {
+    while (l < r) {
+        swap(&s[l], &s[r]);
+        l++;
+        r--;
+    }
+}
 
+int main() {
+    char *s;
+    int n, i;
 
+    scanf("%d", &n);
+
+    s = (char *)malloc((n + 1) * sizeof(char));
+    scanf("%s", s);
+
+    qsort(s, n, sizeof(char), cmp);
+
+    while (1) {
+        printf("%s\n", s);
+
+        int i = n - 2;
+        while (i >= 0 && s[i] >= s[i + 1])
+            i--;
+
+        if (i < 0)
+            break;
+
+        int j = n - 1;
+        while (s[j] <= s[i])
+            j--;
+
+        swap(&s[i], &s[j]);
+        reverse(s, i + 1, n - 1);
+    }
+
+    free(s);
+
+    return 0;
+}
+```
 Output:
-
-
-//paste your output here
-
-
-
-
-
+<img width="486" height="417" alt="image" src="https://github.com/user-attachments/assets/db5e2c5f-53dc-4b91-99d6-0102bda92819" />
 
 Result:
 Thus, the program is verified successfully
@@ -116,21 +199,38 @@ Algorithm:
 7.	End
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int main() {
+    int n, i, j, len, min;
 
+    scanf("%d", &n);
 
+    len = 2 * n - 1;
 
+    for (i = 0; i < len; i++) {
+        for (j = 0; j < len; j++) {
+            int top = i;
+            int left = j;
+            int right = len - 1 - j;
+            int bottom = len - 1 - i;
 
+            min = top;
+            if (left < min) min = left;
+            if (right < min) min = right;
+            if (bottom < min) min = bottom;
+
+            printf("%d ", n - min);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+```
 Output:
-
-
-//paste your output here
-
-
-
-
-
+<img width="516" height="420" alt="image" src="https://github.com/user-attachments/assets/cab30369-a167-4314-91c9-592f56a844ce" />
 
 Result:
 Thus, the program is verified successfully
@@ -155,48 +255,28 @@ o	Call the square() function and display the result.
 5.	End.
 
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int square() {
+    int num;
+    scanf("%d", &num);
+    return num * num;
+}
 
+int main() {
+    int result;
 
+    printf("Enter a number: ");
+    result = square();
 
+    printf("Square = %d", result);
 
+    return 0;
+}
+```
 Output:
-
-
-//paste your output here
-
-
-
-
-
+<img width="497" height="352" alt="image" src="https://github.com/user-attachments/assets/2d120f5a-6c31-4fd1-a660-8bf2a9f5bc0c" />
 
 Result:
 Thus, the program is verified successfully
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
