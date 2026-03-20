@@ -12,10 +12,34 @@ Algorithm:
 5.	Call the max_of_four function with the input integers and store the result in the greater variable
  
 Program:
-//type your code here
+```
+#include <stdio.h>
 
+int max_of_four(int n1, int n2, int n3, int n4) {
+    if (n1 >= n2 && n1 >= n3 && n1 >= n4)
+        return n1;
+    else if (n2 >= n1 && n2 >= n3 && n2 >= n4)
+        return n2;
+    else if (n3 >= n1 && n3 >= n2 && n3 >= n4)
+        return n3;
+    else
+        return n4;
+}
+
+int main() {
+    int n1, n2, n3, n4, greater;
+
+    scanf("%d %d %d %d", &n1, &n2, &n3, &n4);
+
+    greater = max_of_four(n1, n2, n3, n4);
+
+    printf("%d\n", greater);
+
+    return 0;
+}
+```
 Output:
-//paste your output here
+<img width="600" height="306" alt="image" src="https://github.com/user-attachments/assets/74c24fc5-5afb-4919-a25e-35ebc8b69a2e" />
 
 Result:
 Thus, the program  that create a function to find the greatest number is verified successfully.
@@ -36,10 +60,41 @@ Algorithm:
 7.	Call the calculate_the_max function with input values.
  
 Program:
-//type your code here
+```
+#include <stdio.h>
 
+void calculate_the_max(int n, int k) {
+    int a = 0, o = 0, x = 0;
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = i + 1; j <= n; j++) {
+
+            if ((i & j) < k && (i & j) > a)
+                a = (i & j);
+
+            if ((i | j) < k && (i | j) > o)
+                o = (i | j);
+
+            if ((i ^ j) < k && (i ^ j) > x)
+                x = (i ^ j);
+        }
+    }
+
+    printf("%d\n%d\n%d\n", a, o, x);
+}
+
+int main() {
+    int n, k;
+
+    scanf("%d %d", &n, &k);
+
+    calculate_the_max(n, k);
+
+    return 0;
+}
+```
 Output:
-//paste your output here
+<img width="623" height="337" alt="image" src="https://github.com/user-attachments/assets/4dc9666b-ac64-4da4-b4be-b86b98cbb3b3" />
 
 Result:
 Thus, the program to print the maximum values for the AND, OR and XOR comparisons
@@ -59,11 +114,58 @@ Algorithm:
 5.	Use a for loop to iterate over the queries.
  
 Program:
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
 
+int main() {
+    int noshel, noque;
+    scanf("%d %d", &noshel, &noque);
+
+    int *nobookarr = (int *)calloc(noshel, sizeof(int));
+    int **shelarr = (int **)malloc(noshel * sizeof(int *));
+
+    for (int i = 0; i < noshel; i++) {
+        shelarr[i] = NULL;
+    }
+
+    for (int i = 0; i < noque; i++) {
+        int type;
+        scanf("%d", &type);
+
+        if (type == 1) {
+            int x, y;
+            scanf("%d %d", &x, &y);
+
+            nobookarr[x]++;
+            shelarr[x] = (int *)realloc(shelarr[x], nobookarr[x] * sizeof(int));
+            shelarr[x][nobookarr[x] - 1] = y;
+        }
+        else if (type == 2) {
+            int x, y;
+            scanf("%d %d", &x, &y);
+
+            printf("%d\n", shelarr[x][y]);
+        }
+        else if (type == 3) {
+            int x;
+            scanf("%d", &x);
+
+            printf("%d\n", nobookarr[x]);
+        }
+    }
+
+    for (int i = 0; i < noshel; i++) {
+        free(shelarr[i]);
+    }
+    free(shelarr);
+    free(nobookarr);
+
+    return 0;
+}
+```
 Output:
-//paste your output here
-
+<img width="611" height="407" alt="image" src="https://github.com/user-attachments/assets/7b29124a-19ed-49b6-a805-78158c3a191c" />
 
 Result:
 Thus, the program to write the logic for the requests is verified successfully.
@@ -83,16 +185,29 @@ Algorithm:
 6.	Use scanf to input each integer and add it to the sum.
 7.	Print the final sum using printf.
 
-
-
 Program:
-//type your code here
+```
+#include <stdio.h>
 
+int main() {
+    int n, sum = 0;
+
+    scanf("%d", &n);
+
+    int a[n];
+
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+        sum += a[i];
+    }
+
+    printf("%d\n", sum);
+
+    return 0;
+}
+```
 Output:
-//paste your output here
-
- 
-
+<img width="604" height="417" alt="image" src="https://github.com/user-attachments/assets/0a13408a-cf29-4e3e-9255-60995665277c" />
 
 Result:
 Thus, the program prints the sum of the integers in the array is verified successfully.
@@ -120,12 +235,30 @@ o	If a character is not a space, it may belong to a word. If it's the first non-
 
 
 Program:
-//type your code here
+```
+#include <stdio.h>
+#include <string.h>
 
+int main() {
+    char str[200];
+    int count = 0;
+
+    fgets(str, sizeof(str), stdin);
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        if ((i == 0 && str[i] != ' ' && str[i] != '\n') ||
+            (str[i] != ' ' && str[i-1] == ' ')) {
+            count++;
+        }
+    }
+
+    printf("%d\n", count);
+
+    return 0;
+}
+```
 Output:
-//paste your output here
-
-
+<img width="608" height="394" alt="image" src="https://github.com/user-attachments/assets/4040ae7e-e076-4056-95f4-933da94a7b41" />
 
 Result:
 
